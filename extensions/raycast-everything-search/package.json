@@ -10,6 +10,7 @@
     "Data"
   ],
   "license": "MIT",
+  "platform": "windows",
   "commands": [
     {
       "name": "index",
