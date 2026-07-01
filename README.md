@@ -1,31 +1,98 @@
-<p align="center">
-  <img src="images/store-logo.webp" height="128">
-  <h1 align="center">Raycast Extensions</h1>
-</p>
+# 🔍 raycast-everything-search
 
-<p align="center">
-  <a aria-label="Follow Raycast on X" href="https://x.com/raycast">
-    <img alt="" src="https://img.shields.io/badge/Follow%20@raycast-black.svg?style=for-the-badge&logo=X">
-  </a>
-  <a aria-label="Join the community on Slack" href="https://raycast.com/community">
-    <img alt="" src="https://img.shields.io/badge/Join%20the%20community-black.svg?style=for-the-badge&logo=Raycast&logoColor=fff">
-  </a>
-</p>
+Search files on Windows instantly with Everything engine — native Raycast list UI.
 
-[Raycast](https://raycast.com/) lets you control your tools with a few keystrokes. This repository contains all extensions that are available in the [Raycast Store](https://raycast.com/store). It also includes documentation and examples of how to extend Raycast using React.
+[![Raycast Store](https://img.shields.io/badge/Raycast-Store-red)](https://www.raycast.com/moviezhou/raycast-everything-search)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![platform](https://img.shields.io/badge/platform-windows-blue)](https://www.raycast.com/)
 
-![Header](images/header.webp)
+## ✨ Features
 
-## Getting Started
+- ⚡ **Instant search** — powered by Voidtools Everything NTFS index, results in milliseconds
+- 🖥️ **Native Raycast UI** — file list with icons, keyboard navigation, Action Panel
+- 🌏 **Chinese support** — full GBK/CP936 encoding support for Chinese filenames and paths
+- 📁 **File actions** — Open file, Show in Explorer, Copy path, Open with...
+- 🔧 **Configurable** — custom es.exe path, max results limit
 
-Visit [https://developers.raycast.com](https://developers.raycast.com) to get started with our API. If you want to discover and install extensions, check out [our Store](https://raycast.com/store).
+## 📦 Installation
 
-Be sure to read and follow our [Community](https://manual.raycast.com/community-guidelines) and [Extension](https://manual.raycast.com/extensions) guidelines and [Acceptable Use Policy](https://www.raycast.com/aup) when submitting your extension and interacting with other folks in this repository.
+### Prerequisites
 
-## Feedback
+- [Raycast](https://raycast.com/) for Windows (v0.66+)
+- [Everything](https://www.voidtools.com/) by Voidtools (installed and running — es.exe is included)
 
-Raycast wouldn't be where it is without the feedback from our community, so we would be happy to hear what you think of the API / DevX and how we can improve. Please use [GitHub issues](https://github.com/raycast/extensions/issues/new/choose) for everything API related (bugs, improvements suggestions, developer experience, docs, etc). We have a few [templates](https://developers.raycast.com/examples) that should help you get started.
+### Option 1: Install from Store (recommended)
 
-## Community
+1. Open Raycast (`Ctrl+Space`)
+2. Search `Store` and open it
+3. Search for `Everything Search`
+4. Click Install
 
-Join our [Slack community](https://raycast.com/community) to share your extension, debug nasty bugs or simply get to know like-minded folks.
+### Option 2: Install from source
+
+```bash
+git clone https://github.com/moviezhou/raycast-everything-search.git
+cd raycast-everything-search
+npm install
+npx ray build -o "%APPDATA%\..\Local\Raycast\extensions\raycast-everything-search"
+```
+
+Then restart Raycast.
+
+### Option 3: Development mode
+
+```bash
+git clone https://github.com/moviezhou/raycast-everything-search.git
+cd raycast-everything-search
+npm install
+npx ray dev
+```
+
+Keep the terminal open — Raycast will load the extension in development mode with hot-reload.
+
+## 🚀 Usage
+
+1. Open Raycast (`Ctrl+Space`)
+2. Type `Search Everything`
+3. Enter your search query
+4. Browse results with arrow keys and press `Enter` to open
+5. Press `Ctrl+K` for more actions (Show in Explorer, Copy path, etc.)
+
+### Search syntax
+
+Everything supports a powerful query language:
+
+| Syntax | Example | Description |
+|---|---|---|
+| `ext:` | `ext:pdf` `ext:docx;xlsx` | Filter by file extension |
+| `folder:` | `folder:D:\work` | Limit search to a specific folder |
+| `dm:` | `dm:today` `dm:thisweek` | Filter by date modified |
+| `size:` | `size:>10mb` `size:1mb..10mb` | Filter by file size |
+| `file:` / `folder:` | `file:` / `folder:` | Files only / folders only |
+| `!` | `!*.tmp` | Exclude pattern |
+| `""` | `"quarterly report"` | Exact phrase match |
+| `content:` | `content:"budget"` | Search file contents (requires Everything content indexing) |
+
+## ⚙️ Preferences
+
+Configure these in Raycast → Extensions → Everything Search:
+
+| Preference | Default | Description |
+|---|---|---|
+| **es.exe Path** | `C:\Program Files\Everything\es.exe` | Path to Everything's command-line tool |
+| **Max Results** | `50` | Maximum number of search results to display |
+
+## 🧰 Tech Stack
+
+- [Raycast API](https://developers.raycast.com/) — Extension framework
+- [TypeScript](https://www.typescriptlang.org/) + [React](https://react.dev/)
+- [iconv-lite](https://github.com/ashtuchkin/iconv-lite) — Chinese encoding conversion
+- [Everything](https://www.voidtools.com/) — NTFS search engine
+
+## 📄 License
+
+MIT © [Movie](https://github.com/moviezhou)
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit PRs on [GitHub](https://github.com/moviezhou/raycast-everything-search).
